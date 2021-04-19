@@ -1,3 +1,4 @@
+// Theme switcher
 const input = document.querySelector(".theme-switcher input");
 input.addEventListener('change', (e) => {
     if (e.target.checked) {
