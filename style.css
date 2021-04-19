@@ -1,0 +1,168 @@
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Bebas Neue", cursive;
+}
+/* dark mode */
+body[data-theme="dark"] {
+  --body: #131419;
+  --box-shadow-1: rgba(255, 255, 255, 0.05);
+  --box-shadow-2: rgba(0, 0, 0, 0.5);
+  --box-shadow-inset-1: rgba(255, 255, 255, 0.1);
+  --box-shadow-inset-2: rgba(0, 0, 0, 0.8);
+  --h1-color: #c7c7c7;
+  --label-color: #868686;
+  --form-input-bg: #03a9f4;
+  --form-submit-color: #006c9c;
+  --placeholder: #555;
+  --link-color: #ff0047;
+}
+/* Light Mode */
+body[data-theme="light"] {
+  --body: #ebf5fc;
+  --label-color: #868686;
+  --box-shadow-1: rgba(255, 255, 255, 0.8);
+  --box-shadow-2: rgba(0, 0, 0, 0.1);
+  --box-shadow-inset-1: rgba(255, 255, 255, 1);
+  --box-shadow-inset-2: rgba(0, 0, 0, 0.1);
+  --h1-color: #32a3b1;
+  --form-input-bg: #32a3b1;
+  --form-submit-color: #27b1c4;
+  --placeholder: #bdcada;
+  --link-color: #ff0047;
+}
+/* body */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-flow: column wrap;
+  min-height: 100vh;
+  background: var(--body);
+}
+/* toggling the data-theme from dark to light mode*/
+/* dynamic checkbox */
+.theme-switcher {
+  position: absolute;
+  right: 30px;
+  top: 10px;
+}
+.theme-switcher input {
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+.theme-switcher label {
+  display: block;
+  text-indent: -999999px;
+  height: 40px;
+  width: 90px;
+  background: var(--body);
+  border-radius: 50px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: inset -2px -2px 6px var(--box-shadow-inset-1),
+    inset 2px 2px 6px var(--box-shadow-inset-2);
+  transition: 0.5s ease background-color;
+}
+.theme-switcher label::after {
+  position: absolute;
+  content: "";
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: var(--form-input-bg);
+  top: 50%;
+  left: 5px;
+  box-shadow: -5px -5px 10px var(--box-shadow-1),
+    5px 5px 15px var(--box-shadow-2);
+
+  transform: translateY(-50%);
+  transition: 0.5s ease;
+}
+.theme-switcher input:checked + label {
+  box-shadow: inset -2px -2px 6px var(--box-shadow-inset-1),
+    inset 2px 2px 6px var(--box-shadow-inset-2);
+}
+
+.theme-switcher input:checked + label::after {
+  background-color: var(--form-input-bg);
+  left: calc(100% - 35px);
+}
+/* Main Container */
+.form {
+  position: relative;
+  width: 350px;
+  padding: 40px 40px 60px;
+  background: var(--body);
+  border-radius: 10px;
+  text-align: center;
+  box-shadow: -5px -5px 10px var(--box-shadow-1),
+    5px 5px 15px var(--box-shadow-2);
+}
+/* heading */
+.form h2 {
+  color: var(--h1-color);
+  font-weight: 800;
+  font-size: 2rem;
+  text-decoration: uppercase;
+  letter-spacing: 4px;
+}
+/* Input */
+.form .input {
+  text-align: left;
+  margin-top: 40px;
+}
+.form .input .inputBox {
+  margin-top: 20px;
+}
+/* Input label */
+.form .input .inputBox label {
+  display: block;
+  color: var(--label-color);
+  margin-bottom: 5px;
+  font-size: 18px;
+}
+.form .input .inputBox input {
+  width: 100%;
+  height: 50px;
+  background: var(--body);
+  border: none;
+  outline: none;
+  border-radius: 40px;
+  padding: 5px 15px;
+  color: var(--form-input-bg);
+  font-size: 18px;
+
+  box-shadow: inset -2px -2px 6px var(--box-shadow-inset-1),
+    inset 2px 2px 6px var(--box-shadow-inset-2);
+}
+/* Accessing submit type */
+.form .input .inputBox input[type="submit"] {
+  margin-top: 20px;
+  box-shadow: -2px -2px 6px var(--box-shadow-inset-1),
+    2px 2px 6px var(--box-shadow-inset-2);
+}
+/* Giving some effect on submit */
+.form .input .inputBox input[type="submit"]:active {
+  color: var(--form-submit-color);
+  margin-top: 20px;
+  box-shadow: inset -2px -2px 6px var(--box-shadow-inset-1),
+    inset 2px 2px 6px var(--box-shadow-inset-2);
+}
+/* Giving color and size to  placeholder  */
+.form .input .inputBox input::placeholder {
+  color: var(--placeholder);
+  font-size: 18px;
+}
+/* the statement at bottom */
+.forget {
+  margin-top: 30px;
+  color: var(--placeholder);
+}
+/* giving the color to hyperlink */
+.forget a {
+  color: var(--link-color);
+}
